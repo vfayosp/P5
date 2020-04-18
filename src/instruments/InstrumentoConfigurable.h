@@ -1,6 +1,6 @@
 
-#ifndef INSTRUMENTOFM
-#define INSTRUMENTOFM
+#ifndef INSTRUMENTOCONF
+#define INSTRUMENTOCONF
 
 #include <vector>
 #include <string>
@@ -8,7 +8,7 @@
 #include "envelope_adsr.h"
 
 namespace upc {
-      class instrumentoFM: public upc::Instrument {
+      class instrumentoConfigurable: public upc::Instrument {
             EnvelopeADSR adsr;
             int index;
             std::vector<float> tbl;
@@ -19,7 +19,7 @@ namespace upc {
             float fase1, fase2;
             float v;
       public:
-            instrumentoFM(const std::string &param = "");
+            instrumentoConfigurable(const std::string &param = "");
             void command(long cmd, long note, long vel = 0);
             const std::vector<float> & synthesize();
             bool is_active() const {
