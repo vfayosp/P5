@@ -48,6 +48,101 @@ Implemente el instrumento `Seno` tomando como modelo el `InstrumentDumb`. La se�
 mediante búsqueda de los valores en una tabla.
 
 - Incluya, a continuación, el código del fichero `seno.cpp` con los métodos de la clase Seno.
+<code>
+	#include <iostream>
+	#include <math.h>
+	#include "seno.h"
+	#include "keyvalue.h"
+	#include "wavfile_mono.h"
+
+	#include <stdlib.h>
+
+	using namespace upc;
+	using namespace std;
+
+	Seno::Seno(const std::string &param) 
+	  : adsr(SamplingRate, param) {
+	  bActive = false;
+	  x.resize(BSIZE);
+	  /*
+	    You can use the class keyvalue to parse "param" and configure your instrument.
+	    Take a Look at keyvalue.h    
+	  */
+	  unsigned int fm;
+	  std::string file_name;
+	  static string kv_null;
+	  KeyValue kv;
+	  /*
+	  if ((file_name = kv("file")) == kv_null) {
+	  cerr << "Error: no se ha encontrado el campo con el fichero de la señal para, un instrumento FicTabla" << endl;
+	  throw -1;
+	  }
+
+	  if (readwav_mono(file_name, fm, tbl) < 0) {
+	  cerr << "Error: no se puede leer el fichero " << file_name << " para un, instrumento FicTabla" << endl;
+	  throw -1;
+	  }
+	  */
+	  int N;
+
+	  if (!kv.to_int("N",N))
+	    N = 40; //default value
+
+	  //Create a tbl with one period of a sinusoidal wave
+	  tbl.resize(N);
+	  float phase = 0, step = 2 * M_PI /(float) N;
+	  index = 0;
+	  for (int i=0; i < N ; ++i) {
+	    tbl[i] = sin(phase);
+	    phase += step;
+	  }
+	}
+
+	void Seno::command(long cmd, long note, long vel) {
+
+	  if (cmd == 9) {		//'Key' pressed: attack begins
+	    bActive = true;
+	    adsr.start();
+	    index = 0;
+	    f0 = (pow(2, (note-69)/12.))*440;
+	    paso = (f0*tbl.size())/SamplingRate;
+		  A = vel / 127.;
+	  }
+	  else if (cmd == 8) {	//'Key' released: sustain ends, release begins
+	    adsr.stop();
+	  }
+	  else if (cmd == 0) {	//Sound extinguished without waiting for release to end
+	    adsr.end();
+	  }
+
+	}
+
+
+	const vector<float> & Seno::synthesize() {
+	  FILE *f;
+	  f = fopen("senal.txt", "a");
+	  if (not adsr.active()) {
+	    x.assign(x.size(), 0);
+	    bActive = false;
+	    return x;
+	  }
+	  else if (not bActive){
+	    return x;
+	  } else {
+	    for (unsigned int i=0; i<x.size(); ++i) {
+	      index+=paso;
+	      while(index>=tbl.size()){
+		index=index-tbl.size();
+	      }
+	      x[i]=A*(((tbl[(int)index]-tbl[((int)index+1)%tbl.size()]) * (index - (int)index)) + tbl[(int)index]);
+	      fprintf(f, "%f\n", x[i]);
+	    }
+	  }
+	  adsr(x); //apply envelope to x and update internal status of ADSR
+	  fclose(f);
+	  return x;
+	}
+</code>
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
