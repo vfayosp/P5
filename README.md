@@ -49,12 +49,12 @@ mediante búsqueda de los valores en una tabla.
 
 - Incluya, a continuación, el código del fichero `seno.cpp` con los métodos de la clase Seno.
 <code>
+	
 	#include <iostream>
 	#include <math.h>
 	#include "seno.h"
 	#include "keyvalue.h"
 	#include "wavfile_mono.h"
-
 	#include <stdlib.h>
 
 	using namespace upc;
@@ -151,7 +151,7 @@ mediante búsqueda de los valores en una tabla.
   
 ![seno.png][img1]
 
-[img1]: /fotos y graficos/seno.png "Título alternativo"
+[img1]:P5/fotos y graficos/seno.png "Título alternativo"
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
