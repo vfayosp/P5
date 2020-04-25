@@ -159,7 +159,7 @@ mediante búsqueda de los valores en una tabla.
   
   Para implementar los valores contenidos en la tabla se ha iterado un seno de manera discreta a razón de las N muestras requeridas, y seguidamente se asignan los valores al vector x obteniendo el valor medio entre una muestra y la siguiente.
   
-![Seno](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/seno.png  "Título alternativo")
+![Seno](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/seno.png  "Seno")
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
@@ -170,10 +170,15 @@ mediante búsqueda de los valores en una tabla.
   sinusoidal. Deberá explicar detalladamente cómo se manifiestan los parámetros del efecto (frecuencia e
   índice de modulación) en la señal generada (se valorará que la explicación esté contenida en las propias
   gráficas, sin necesidad de *literatura*).
+  
+  ![Tremolo](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/tremolo.png "Trémolo")
+  
 - Si ha generado algún efecto por su cuenta, explique en qué consiste, cómo lo ha implementado y qué
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
+  
+  ![Vibrato](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/tremolo.png "Vibrato")
 
 ### Síntesis FM.
 
