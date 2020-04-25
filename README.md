@@ -146,6 +146,9 @@ mediante búsqueda de los valores en una tabla.
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
+  
+  Para implementar los valores contenidos en la tabla se ha iterado un seno de manera discreta a razón de las N muestras requeridas, y seguidamente se asignan los valores al vector x obteniendo el valor medio entre una muestra y la siguiente.
+  
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
 
