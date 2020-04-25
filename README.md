@@ -119,7 +119,7 @@ mediante búsqueda de los valores en una tabla.
 
 
 	const vector<float> & Seno::synthesize() {
-	  FILE *f;
+	    FILE *f;
 	  f = fopen("senal.txt", "a");
 	  if (not adsr.active()) {
 	    x.assign(x.size(), 0);
@@ -134,7 +134,7 @@ mediante búsqueda de los valores en una tabla.
 	      while(index>=tbl.size()){
 		index=index-tbl.size();
 	      }
-	      x[i]=A*(((tbl[(int)index]-tbl[((int)index+1)%tbl.size()]) * (index - (int)index)) + tbl[(int)index]);
+	      x[i]=A*(tbl[index] + tbl[((int)index + 1)%tbl.size()])/2;
 	      fprintf(f, "%f\n", x[i]);
 	    }
 	  }
@@ -148,6 +148,10 @@ mediante búsqueda de los valores en una tabla.
   tabla y los de la señal generada.
   
   Para implementar los valores contenidos en la tabla se ha iterado un seno de manera discreta a razón de las N muestras requeridas, y seguidamente se asignan los valores al vector x obteniendo el valor medio entre una muestra y la siguiente.
+  
+![seno.png][img1]
+
+[img1]: /fotos y graficos/seno.png "Título alternativo"
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
