@@ -27,16 +27,26 @@ permitan visualizar el funcionamiento de la curva ADSR.
 
 * Un instrumento con una envolvente ADSR genérica, para el que se aprecie con claridad cada uno de sus
   parámetros: ataque (A), caída (D), mantenimiento (S) y liberación (R).
+  
+  ![Genérico](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/generico.png  "Genérico")
+  
 * Un instrumento *percusivo*, como una guitarra o un piano, en el que el sonido tenga un ataque rápido, no
   haya mantenimiemto y el sonido se apague lentamente.
   - Para un instrumento de este tipo, tenemos dos situaciones posibles:
     * El intérprete mantiene la nota *pulsada* hasta su completa extinción.
-    * El intérprete da por finalizada la nota antes de su completa extinción, iniciándose una disminución
-	  abrupta del sonido hasta su finalización.
+    
+    ![Percusivo](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/Percusivo.png  "Percusivo")
+    
+    * El intérprete da por finalizada la nota antes de su completa extinción, iniciándose una disminución abrupta del sonido hasta su finalización.
+    
+    ![Percusivo Abrupto](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/PercusivoAbrupto.png  "Percusivo Abrupto")
+    
   - Debera representar en esta memoria **ambos** posibles finales de la nota.
 * Un instrumento *plano*, como los de cuerdas frotadas (violines y semejantes) o algunos de viento. En
   ellos, el ataque es relativamente rápido hasta alcanzar el nivel de mantenimiento (sin sobrecarga), y la
   liberación también es bastante rápida.
+  
+  ![Plano](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/Plano.png  "Plano")
 
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá
 añadir la información necesaria para su correcta interpretación, aunque esa información puede reducirse a
