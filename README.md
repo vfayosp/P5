@@ -149,9 +149,7 @@ mediante búsqueda de los valores en una tabla.
   
   Para implementar los valores contenidos en la tabla se ha iterado un seno de manera discreta a razón de las N muestras requeridas, y seguidamente se asignan los valores al vector x obteniendo el valor medio entre una muestra y la siguiente.
   
-![seno.png][img1]
-
-[img1]:P5/fotos y graficos/seno.png "Título alternativo"
+![Seno](P5/fotos y graficos/seno.png "Título alternativo")
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
