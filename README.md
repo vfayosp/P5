@@ -178,7 +178,7 @@ mediante búsqueda de los valores en una tabla.
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
   
-  ![Vibrato](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/tremolo.png "Vibrato")
+  ![Vibrato](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/vibrato.png "Vibrato")
 
 ### Síntesis FM.
 
