@@ -74,25 +74,6 @@ mediante búsqueda de los valores en una tabla.
 	  : adsr(SamplingRate, param) {
 	  bActive = false;
 	  x.resize(BSIZE);
-	  /*
-	    You can use the class keyvalue to parse "param" and configure your instrument.
-	    Take a Look at keyvalue.h    
-	  */
-	  unsigned int fm;
-	  std::string file_name;
-	  static string kv_null;
-	  KeyValue kv;
-	  /*
-	  if ((file_name = kv("file")) == kv_null) {
-	  cerr << "Error: no se ha encontrado el campo con el fichero de la señal para, un instrumento FicTabla" << endl;
-	  throw -1;
-	  }
-
-	  if (readwav_mono(file_name, fm, tbl) < 0) {
-	  cerr << "Error: no se puede leer el fichero " << file_name << " para un, instrumento FicTabla" << endl;
-	  throw -1;
-	  }
-	  */
 	  int N;
 
 	  if (!kv.to_int("N",N))
@@ -191,6 +172,15 @@ deberá venir expresado en semitonos.
 
 - Use el instrumento para generar un vibrato de *parámetros razonables* e incluya una gráfica en la que se
   vea, claramente, la correspondencia entre los valores `N1`, `N2` e `I` con la señal obtenida.
+
+  ![I=1_N1=1_N2=1](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/I1_N11_N21.png "Señal de referencia")
+  
+  ![I=5_N1=1_N2=1](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/I5_N11_N21.png "I=5")
+
+  ![I=1_N1=3_N2=1](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/I1_N13_N21.png "N1=3")
+
+  ![I=1_N1=1_N2=3](https://github.com/vfayosp/P5/blob/fayos-valverde/fotos%20y%20graficos/I1_N11_N23.png "N2=3")
+
 - Use el instrumento para generar un sonido tipo clarinete y otro tipo campana. Tome los parámetros del
   sonido (N1, N2 e I) y de la envolvente ADSR del citado artículo. Con estos sonidos, genere sendas escalas
   diatónicas (fichero `doremi.sco`) y ponga el resultado en los ficheros `work/doremi/clarinete.wav` y
@@ -211,10 +201,21 @@ Use el programa `synth` para generar canciones a partir de su partitura MIDI. Co
 - Indique, a continuación, la orden necesaria para generar la señal (suponiendo que todos los archivos
   necesarios están en directorio indicado).
 
+  Si estamos en el directorio P5:
+  make release
+  midi2sco work/music/ToyStory_A_Friend_in_me.mid work/music/ToyStory_A_Friend_in_me.sco
+  synth work/music/ToyStory_A_Friend_in_me.orc
+  		work/music/ToyStory_A_Friend_in_me.sco
+		work/music/ToyStory_A_Friend_in_me.wav
+
+  Hay que destacar que hemos añadido un campo en el .orc para poder ponderar la aportación sonora de cada
+  instrumento. Esto se ha hecho basicamente para que en ciertas ocasiones no se saturara el volumen al
+  sumar los instrumentos.
+
 También puede orquestar otros temas más complejos, como la banda sonora de *Hawaii5-0* o el villacinco de
 John Lennon *Happy Xmas (War Is Over)* (fichero `The_Christmas_Song_Lennon.sco`), o cualquier otra canción
 de su agrado o composición. Se valorará la riqueza instrumental, su modelado y el resultado final.
-- Coloque los ficheros generados, junto a sus ficheros `score`, `instruments` y `efffects`, en el directorio
+- Coloque los ficheros generados, junto a sus ficheros `score`, `instruments` y `effects`, en el directorio
   `work/music`.
 - Indique, a continuación, la orden necesaria para generar cada una de las señales usando los distintos
   ficheros.
